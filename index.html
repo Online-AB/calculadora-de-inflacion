@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="author" content="Asad Company" />
+<meta name="description" content="Calculadora de Inflación - Inflation Calculator to adjust amounts for inflation between years using CPI data. Understand the true value of money over time." />
+<meta name="keywords" content="inflation calculator, calculadora de inflacion, money value, CPI data, financial planning, inflation adjustment" />
+<meta name="robots" content="index, follow" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Calculadora de Inflación - Inflation Calculator" />
+<meta property="og:description" content="Easily calculate the inflation-adjusted value of money between years using our powerful Calculadora de Inflación tool." />
+<meta property="og:url" content="https://yourwebsite.com" />
+<meta property="og:image" content="https://images.unsplash.com/photo-1567428489361-4b4ecb7e3f26?auto=format&fit=crop&w=800&q=80" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Calculadora de Inflación - Inflation Calculator" />
+<meta name="twitter:description" content="Calculate the true value of money over time with our inflation calculator tool." />
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1567428489361-4b4ecb7e3f26?auto=format&fit=crop&w=800&q=80" />
+
+<title>Calculadora de Inflación - Inflation Calculator</title>
+<style>
+  /* Color Palette */
+  :root {
+    --primary-color: #2a72d8;
+    --secondary-color: #f9fafb;
+    --accent-color: #f28b30;
+    --text-color: #333;
+    --background-color: #ffffff;
+    --border-color: #e0e0e0;
+    --shadow-color: rgba(42, 114, 216, 0.3);
+  }
+
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 8px var(--shadow-color);
+  }
+
+  header .logo {
+    font-weight: 700;
+    font-size: 1.6rem;
+    letter-spacing: 1px;
+  }
+
+  nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    gap: 20px;
+  }
+
+  nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+  }
+
+  nav ul li a:hover,
+  nav ul li a:focus {
+    color: var(--accent-color);
+    outline: none;
+  }
+
+  main {
+    flex: 1;
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+    background: var(--background-color);
+    border-radius: 8px;
+    box-shadow: 0 0 15px var(--shadow-color);
+  }
+
+  h1, h2 {
+    color: var(--primary-color);
+  }
+
+  .calculator {
+    margin-top: 20px;
+    padding: 25px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: #fefefe;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+
+  input, select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+  }
+
+  input:focus, select:focus {
+    border-color: var(--primary-color);
+    outline: none;
+  }
+
+  button {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  button:hover {
+    background-color: #d26d09;
+  }
+
+  .result {
+    margin-top: 20px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--primary-color);
+  }
+
+  article {
+    margin-top: 50px;
+  }
+
+  article img {
+    float: right;
+    max-width: 280px;
+    margin-left: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px var(--shadow-color);
+  }
+
+  article p {
+    margin-bottom: 16px;
+  }
+
+  article a {
+    color: var(--accent-color);
+    text-decoration: none;
+  }
+
+  article a:hover {
+    text-decoration: underline;
+  }
+
+  footer {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 30px 20px;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .author-profile {
+    display: flex;
+    align-items: center;
+    max-width: 350px;
+  }
+
+  .author-photo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--shadow-color);
+    margin-right: 15px;
+    object-fit: cover;
+    border: 2px solid var(--accent-color);
+  }
+
+  .author-info {
+    font-size: 1rem;
+    line-height: 1.3;
+  }
+
+  .author-info strong {
+    display: block;
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    article img {
+      float: none;
+      display: block;
+      margin: 0 auto 20px auto;
+      max-width: 100%;
+    }
+
+    footer {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .author-profile {
+      justify-content: center;
+      max-width: 100%;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo" aria-label="Calculadora de Inflación logo">Calculadora de Inflación</div>
+  <nav aria-label="Primary navigation">
+    <ul>
+      <li><a href="#calculator-title">Calculator</a></li>
+      <li><a href="#article">Article</a></li>
+      <li><a href="#author">Author</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section class="calculator" aria-labelledby="calculator-title">
+    <h2 id="calculator-title">Inflation Calculator Table</h2>
+    <form id="inflationForm" aria-describedby="instructions">
+      <label for="amount">Enter Amount ($):</label>
+      <input type="number" id="amount" min="1" value="1000" required aria-required="true" />
+      
+      <label for="startYear">Start Year:</label>
+      <select id="startYear" required aria-required="true" aria-label="Select start year">
+        <option value="" disabled>Select year</option>
+      </select>
+      
+      <label for="endYear">End Year:</label>
+      <select id="endYear" required aria-required="true" aria-label="Select end year">
+        <option value="" disabled>Select year</option>
+      </select>
+      
+      <button type="submit" aria-label="Calculate inflation adjusted value">Calculate</button>
+    </form>
+
+    <div class="result" id="result" aria-live="polite"></div>
+  </section>
+
+  <article id="article">
+    <h2>Understanding the Power of a Calculadora de Inflación</h2>
+    <img src="graph.jpg" alt="Money and inflation concept" />
+    <p>When we talk about money over time, one of the most important concepts to understand is inflation. Prices of goods and services rise gradually, and the purchasing power of money decreases. A  (inflation calculator) is a simple but powerful tool that helps you see exactly how much the value of money has changed between two dates.</p>
+
+    <h3>What Is an Inflation Calculator?</h3>
+    <p>An inflation calculator is an online tool that uses official consumer price index (CPI) data to measure how prices have evolved. By entering a base amount of money and selecting the years you want to compare, the calculator shows you how much more (or less) that money would be worth today.</p>
+    <p>For example, if you type in $1,000 from the year 2000, the calculadora de inflación will estimate how much money you would need in today’s economy to buy the same basket of <a href="https://calculadorade-inflacion.com/" rel="nofollow" target="_blank" aria-label="Inflation calculator tool link" >calculadora de inflacion</a> goods.</p>
+
+    <h3>Why Is It Useful?</h3>
+    <ul>
+      <li>Personal finance planning: It helps individuals understand the real value of savings or investments over time.</li>
+      <li>Business decisions: Companies use inflation data to adjust pricing strategies and salaries.</li>
+      <li>Historical comparisons: <a href="https://calculadorade-inflacion.com/" rel="nofollow" target="_blank" aria-label="Inflation calculator tool link" >calculadora de inflacion</a> Economists and students use it to compare values from different decades.</li>
+    </ul>
+
+    <h3>How to Use a Calculadora de Inflación</h3>
+    <ol>
+      <li>Enter the initial amount of money (for example, $500).</li>
+      <li>Select the start year and the end year.</li>
+      <li>Click calculate.</li>
+      <li>Review the results to see the adjusted value in today’s terms.</li>
+    </ol>
+
+    <p>The process is quick, and it gives you an accurate picture of how inflation affects financial decisions.</p>
+
+    <h3>Final Thoughts</h3>
+    <p>Whether you are saving for retirement, analyzing historical data, or simply curious about how much prices have changed, a calculadora de inflación can give you valuable insights. It bridges the gap between numbers and real-life impact, showing how time and inflation shape the true value of money. <a href="https://calculadorade-inflacion.com/" rel="nofollow" target="_blank" aria-label="Inflation calculator tool link" >calculadora de inflacion</a></p>
+  </article>
+</main>
+
+<footer id="author" aria-label="Author profile">
+  <div class="author-profile">
+    <img src="ASM.jpg" alt="Photo of Asad Company" class="author-photo" />
+    <div class="author-info">
+      <strong>ASM Company</strong>
+      <p>Web developer and inflation enthusiast. Dedicated to providing tools and knowledge that help users understand financial changes over time.</p>
+    </div>
+  </div>
+  <div>&copy; 2025 ASM Company. All rights reserved.</div>
+</footer>
+
+<script>
+  // Populate year dropdowns from 1980 till current year
+  (function populateYears() {
+    const startYearSelect = document.getElementById('startYear');
+    const endYearSelect = document.getElementById('endYear');
+    const currentYear = new Date().getFullYear();
+    for(let year = 1980; year <= currentYear; year++) {
+      const option1 = document.createElement('option');
+      option1.value = year;
+      option1.textContent = year;
+      const option2 = option1.cloneNode(true);
+      startYearSelect.appendChild(option1);
+      endYearSelect.appendChild(option2);
+    }
+  })();
+
+  // Consumer Price Index (CPI) data sample (US) from 1980 to 2025 - simplified version
+  // These values represent CPI for simplicity, sourced/estimated for demonstration
+  const cpiData = {
+    1980: 82.4, 1981: 90.9, 1982: 96.5, 1983: 99.6, 1984: 103.9,
+    1985: 107.6, 1986: 109.6, 1987: 113.6, 1988: 118.3, 1989: 124.0,
+    1990: 130.7, 1991: 136.2, 1992: 140.3, 1993: 144.5, 1994: 148.2,
+    1995: 152.4, 1996: 156.9, 1997: 160.5, 1998: 163.0, 1999: 166.6,
+    2000: 172.2, 2001: 177.1, 2002: 179.9, 2003: 184.0, 2004: 188.9,
+    2005: 195.3, 2006: 201.6, 2007: 207.3, 2008: 215.3, 2009: 214.5,
+    2010: 218.1, 2011: 224.9, 2012: 229.6, 2013: 232.9, 2014: 236.7,
+    2015: 237.0, 2016: 240.0, 2017: 245.1, 2018: 251.1, 2019: 255.7,
+    2020: 258.8, 2021: 270.9, 2022: 292.7, 2023: 301.5, 2024: 310.2,
+    2025: 315.0
+  };
+
+  document.getElementById('inflationForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const amount = parseFloat(document.getElementById('amount').value);
+    const startYear = parseInt(document.getElementById('startYear').value);
+    const endYear = parseInt(document.getElementById('endYear').value);
+
+    if(isNaN(amount) || amount <= 0) {
+      alert('Please enter a valid amount greater than zero.');
+      return;
+    }
+    if(isNaN(startYear) || isNaN(endYear)) {
+      alert('Please select both start and end years.');
+      return;
+    }
+    if(endYear < startYear) {
+      alert('End year must be the same or later than start year.');
+      return;
+    }
+
+    const startCPI = cpiData[startYear];
+    const endCPI = cpiData[endYear];
+
+    if(!startCPI || !endCPI) {
+      alert('CPI data unavailable for selected years.');
+      return;
+    }
+
+    // Formula for inflation adjustment: amount * (CPI_end / CPI_start)
+    const adjustedValue = (amount * (endCPI / startCPI)).toFixed(2);
+
+    const resultDiv = document.getElementById('result');
+    resultDiv.textContent = `An amount of $${amount.toLocaleString()} in ${startYear} is equivalent to $${adjustedValue.toLocaleString()} in ${endYear}, adjusted for inflation.`;
+  });
+</script>
+
+</body>
+</html>
